@@ -11,7 +11,7 @@ function Header({onToggleSidebar}){
 
             <div className="header-user">
                 <div className="user-avatar">
-                    {user?.name?.chartAt(0).toUpperCase()}
+                    {user?.name?.charAt(0).toUpperCase()}
                 </div>
                 <div className="user-info">
                     <span className="user-name">

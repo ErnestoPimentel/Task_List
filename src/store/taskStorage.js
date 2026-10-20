@@ -7,7 +7,13 @@ export function getStoredTasks(){
         return [];
 
     try{
-        return JSON.parse(storedTasks)
+        const parsedTasks = JSON.parse(storedTasks);
+
+        if(!Array.isArray(parsedTasks)){
+            localStorage.removeItem(TASK_STORAGE_KEY);
+            return[];
+        }
+        return parsedTasks;
     }
     catch{
         localStorage.removeItem(TASK_STORAGE_KEY);

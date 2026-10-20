@@ -23,6 +23,7 @@ function TaskPage(){
             editingTask.id,
             changes
         )
+        setEditingTask(null);
     };
 
     const handleCancel = () => {

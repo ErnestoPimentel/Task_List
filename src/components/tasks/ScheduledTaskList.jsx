@@ -40,7 +40,7 @@ function ScheduledTaskList({tasks}){
                             </span>
                             <strong>
                                 {
-                                    dueDate.toLocaleDateString('es-MX', {
+                                    dueDate.toLocaleTimeString('es-MX', {
                                         hour: '2-digit',
                                         minute: '2-digit'
                                     })

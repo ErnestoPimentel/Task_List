@@ -5,7 +5,7 @@ export async function getTasks(){
         setTimeout(resolve, 200);
     });
 
-    return getStoredTasks;
+    return getStoredTasks();
 }
 
 export async function createTask(task){

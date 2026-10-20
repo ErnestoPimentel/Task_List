@@ -3,7 +3,7 @@ import {useTasks} from '../contexts/TaskContext';
 import ScheduledTaskList from '../components/tasks/ScheduledTaskList';
 
 function ScheduledTasksPage(){
-    const {tasks, loading} = useTasks();
+    const {tasks, loading, error} = useTasks();
     const scheduledCount = tasks.filter(
         (task) => task.dueDate && !task.completed
     ).length;
@@ -26,6 +26,13 @@ function ScheduledTasksPage(){
                     Administra tareas
                 </Link>
             </div>
+            {
+                error && (
+                    <div className='alert alert-danger' role='alert'>
+                        {error}
+                    </div>
+                )
+            }
             <div className='scheduled-summary'>
                 <div>
                     <span>

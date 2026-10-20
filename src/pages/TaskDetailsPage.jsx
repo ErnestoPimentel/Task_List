@@ -4,7 +4,7 @@ import TaskDetails from '../components/tasks/TaskDetails';
 
 function TaskDetailsPage(){
     const {taskId} = useParams();
-    const {tasks, loading} = useTasks();
+    const {tasks, loading, error} = useTasks();
 
     if(loading){
         return(
@@ -13,6 +13,14 @@ function TaskDetailsPage(){
                 </div>
             </div>
         );
+    }
+
+    if(error){
+        return(
+            <div className='alert alert-danger' role='alert'>
+                {error}
+            </div>
+        )
     }
 
     const task = tasks.find((item) => item.id === taskId);

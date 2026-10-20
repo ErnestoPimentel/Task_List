@@ -43,6 +43,7 @@ function TaskForm({ task = null, onSubmit, onCancel }){
             setTitle('');
             setDescription('');
             setPriority('medium');
+            setDueDate('');
         }
     };
 

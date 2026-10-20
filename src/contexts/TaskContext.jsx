@@ -32,23 +32,23 @@ export function TaskProvider({children}){
         const createdTask = await createTaskService(task);
 
         setTasks((currentTasks) => [
-            createTask,
+            createdTask,
             ...currentTasks
         ]);
         return createdTask;
     };
 
     const updateTask = async(taskId, changes) => {
-        const updateTask = await updateTaskService(taskId, changes);
+        const updatedTask = await updateTaskService(taskId, changes);
 
         setTasks((currentTasks) => 
             currentTasks.map((task) =>
                 task.id === taskId
-                    ? updateTask
+                    ? updatedTask
                     : task
             )
         );
-        return updateTask;
+        return updatedTask;
     };
     
     const deleteTask = async(taskId) => {
