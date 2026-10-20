@@ -19,7 +19,7 @@ src/
 ├── components/
 │   ├── auth/          # Protección de rutas
 │   ├── navigation/    # Cabecera y navegación lateral
-│   └── tasks/         # Formulario, lista, elemento y detalle de tarea
+│   └── tasks/         # Formulario, lista, elemento, detalle y lista de programadas
 ├── contexts/          # Estado global de autenticación y tareas
 ├── layouts/           # Estructura principal de páginas
 ├── pages/             # Login, dashboard y páginas de la aplicación
@@ -35,10 +35,11 @@ src/
 - Protección de las rutas principales.
 - Creación de tareas con título, descripción y prioridad.
 - Captura opcional de fecha y hora programadas desde el formulario de tareas.
+- Edición de los datos de la tarea, incluida su fecha y hora programadas.
 - Cambio del estado de una tarea entre pendiente y completada.
 - Eliminación de tareas.
 - Persistencia local de tareas.
-- Vista de tareas programadas que muestra tareas pendientes con fecha, ordenadas por vencimiento e identifica las fechas vencidas.
+- Vista de tareas programadas con contador de pendientes, orden por fecha de vencimiento e indicador para tareas vencidas.
 - Dashboard calculado a partir de las tareas: total, completadas, pendientes y pendientes de prioridad alta.
 - Porcentaje de avance y lista de hasta cinco tareas recientes en el dashboard.
 - Rutas y vistas para dashboard, lista de tareas, detalle, tareas programadas, tareas compartidas y configuración.
@@ -47,7 +48,7 @@ src/
 
 La autenticación es de demostración: utiliza un usuario definido en el código y no valida credenciales con un servidor. Las tareas se guardan localmente en el mismo navegador y no se sincronizan entre dispositivos o usuarios.
 
-El detalle de tarea y el dashboard ya presentan información de las tareas guardadas. El formulario permite asignar una fecha y hora, y la página de tareas programadas las ordena e indica si ya vencieron. La edición está integrada en la lista y permite modificar los campos del formulario, aunque el flujo requiere validación para considerarlo completo. Las vistas de tareas compartidas y configuración son actualmente pantallas iniciales.
+El detalle de tarea y el dashboard presentan información de las tareas guardadas. El formulario permite establecer o modificar título, descripción, prioridad y fecha/hora opcional; la vista de tareas programadas resume las pendientes con fecha y señala las vencidas. Aunque el flujo de edición está integrado en la lista, todavía requiere validación funcional. Las vistas de tareas compartidas y configuración son pantallas iniciales.
 
 ## Ejecución
 
@@ -64,7 +65,6 @@ Comandos disponibles:
 
 ## Próximos pasos
 
-- Validar y completar el flujo de edición de tareas.
+- Validar el flujo de edición y la carga/reflejo de tareas en la interfaz.
 - Implementar tareas compartidas y preferencias de usuario.
-- Revisar la carga y actualización del estado de tareas para asegurar que la persistencia local se refleje correctamente en la interfaz.
 - Sustituir la autenticación de demostración por un servicio real si el proyecto requiere cuentas de usuario.
