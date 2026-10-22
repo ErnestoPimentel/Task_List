@@ -7,6 +7,7 @@ import $ from 'jquery';
 import App from './App.jsx';
 import { AuthProvider } from './contexts/AuthContext';
 import { TaskProvider } from './contexts/TaskContext.jsx';
+import { NotificationProvider } from './contexts/NotificationContext.jsx';
 import './index.css';
 
 window.$ = $;
@@ -16,7 +17,9 @@ createRoot(document.getElementById('root')).render(
     <StrictMode>
         <AuthProvider>
             <TaskProvider>
-                <App />
+                <NotificationProvider>
+                    <App />
+                </NotificationProvider>
             </TaskProvider>
         </AuthProvider>
     </StrictMode>

@@ -1,4 +1,5 @@
 import { useAuth } from '../../contexts/AuthContext';
+import NotificationBell from '../notifications/NotificationBell';
 
 function Header({onToggleSidebar}){
     const { user, logout } = useAuth();
@@ -10,6 +11,7 @@ function Header({onToggleSidebar}){
             </button>
 
             <div className="header-user">
+                <NotificationBell />
                 <div className="user-avatar">
                     {user?.name?.charAt(0).toUpperCase()}
                 </div>
