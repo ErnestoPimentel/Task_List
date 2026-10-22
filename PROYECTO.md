@@ -19,8 +19,9 @@ src/
 ├── components/
 │   ├── auth/          # Protección de rutas
 │   ├── navigation/    # Cabecera y navegación lateral
+│   ├── notifications/ # Campana y panel de notificaciones
 │   └── tasks/         # Formulario, lista, elemento, detalle y lista de programadas
-├── contexts/          # Estado global de autenticación y tareas
+├── contexts/          # Estado global de autenticación, tareas y notificaciones
 ├── layouts/           # Estructura principal de páginas
 ├── pages/             # Login, dashboard y páginas de la aplicación
 ├── services/          # Operaciones de autenticación y tareas
@@ -40,6 +41,9 @@ src/
 - Eliminación de tareas.
 - Persistencia local de tareas.
 - Vista de tareas programadas con contador de pendientes, orden por fecha de vencimiento e indicador para tareas vencidas.
+- Campana de notificaciones con contador de avisos sin leer y panel desplegable.
+- Avisos para tareas pendientes vencidas o que vencerán dentro de las próximas 24 horas; el estado de lectura se conserva en LocalStorage.
+- Actualización periódica de los avisos cada minuto y acceso al detalle de la tarea desde cada notificación.
 - Dashboard calculado a partir de las tareas: total, completadas, pendientes y pendientes de prioridad alta.
 - Porcentaje de avance y lista de hasta cinco tareas recientes en el dashboard.
 - Rutas y vistas para dashboard, lista de tareas, detalle, tareas programadas, tareas compartidas y configuración.
@@ -48,7 +52,7 @@ src/
 
 La autenticación es de demostración: utiliza un usuario definido en el código y no valida credenciales con un servidor. Las tareas se guardan localmente en el mismo navegador y no se sincronizan entre dispositivos o usuarios.
 
-El detalle de tarea y el dashboard presentan información de las tareas guardadas. El formulario permite establecer o modificar título, descripción, prioridad y fecha/hora opcional; la vista de tareas programadas resume las pendientes con fecha y señala las vencidas. Aunque el flujo de edición está integrado en la lista, todavía requiere validación funcional. Las vistas de tareas compartidas y configuración son pantallas iniciales.
+El detalle de tarea y el dashboard presentan información de las tareas guardadas. El formulario permite establecer o modificar título, descripción, prioridad y fecha/hora opcional; la vista de tareas programadas resume las pendientes con fecha y señala las vencidas. Las notificaciones se calculan a partir de las tareas locales y se refrescan mientras la aplicación está abierta. Aunque el flujo de edición está integrado en la lista, todavía requiere validación funcional. Las vistas de tareas compartidas y configuración son pantallas iniciales.
 
 ## Ejecución
 
@@ -66,5 +70,6 @@ Comandos disponibles:
 ## Próximos pasos
 
 - Validar el flujo de edición y la carga/reflejo de tareas en la interfaz.
+- Revisar el ciclo de vida de las notificaciones al completar o eliminar tareas y al limpiar los datos locales.
 - Implementar tareas compartidas y preferencias de usuario.
 - Sustituir la autenticación de demostración por un servicio real si el proyecto requiere cuentas de usuario.
