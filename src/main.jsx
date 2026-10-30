@@ -8,6 +8,7 @@ import App from './App.jsx';
 import { AuthProvider } from './contexts/AuthContext';
 import { TaskProvider } from './contexts/TaskContext.jsx';
 import { NotificationProvider } from './contexts/NotificationContext.jsx';
+import { LanguageProvider } from './contexts/LanguageContext.jsx';
 import './index.css';
 
 window.$ = $;
@@ -15,12 +16,14 @@ window.jQuery = $;
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <AuthProvider>
-            <TaskProvider>
-                <NotificationProvider>
-                    <App />
-                </NotificationProvider>
-            </TaskProvider>
-        </AuthProvider>
+        <LanguageProvider>
+            <AuthProvider>
+                <TaskProvider>
+                    <NotificationProvider>
+                        <App />
+                    </NotificationProvider>
+                </TaskProvider>
+            </AuthProvider>
+        </LanguageProvider>
     </StrictMode>
 );

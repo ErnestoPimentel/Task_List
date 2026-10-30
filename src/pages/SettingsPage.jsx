@@ -1,3 +1,5 @@
+import LanguageSelector from "../components/settings/LanguageSelector";
+
 function SettingsPage(){
     return (
         <section>
@@ -13,6 +15,15 @@ function SettingsPage(){
                         Administra la configuración de tu cuenta.
                     </p>
                 </div>
+            </div>
+            <div className="settings-section">
+                <h2>
+                    Idioma
+                </h2>
+                <p>
+                    Selecciona el idioma de la aplicación.
+                </p>
+                <LanguageSelector />
             </div>
         </section>
     )
