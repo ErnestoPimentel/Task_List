@@ -73,3 +73,6 @@ Comandos disponibles:
 - Revisar el ciclo de vida de las notificaciones al completar o eliminar tareas y al limpiar los datos locales.
 - Implementar tareas compartidas y preferencias de usuario.
 - Sustituir la autenticación de demostración por un servicio real si el proyecto requiere cuentas de usuario.
+
+## Correcciones menores
+- Etiqueta select no se visualiza correctamente en Chrome. En Edge se ve bien.
