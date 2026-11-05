@@ -48,6 +48,15 @@ src/
 - Porcentaje de avance y lista de hasta cinco tareas recientes en el dashboard.
 - Rutas y vistas para dashboard, lista de tareas, detalle, tareas programadas, tareas compartidas y configuración.
 
+## Internacionalización
+
+- Integración de traducciones en Header.
+- Integración de traducciones en Dashboard.
+- Traducción dinámica de navegación y acciones.
+- Traducción de indicadores estadísticos.
+- Traducción de estados y prioridades de tareas.
+
+
 ## Alcance y estado
 
 La autenticación es de demostración: utiliza un usuario definido en el código y no valida credenciales con un servidor. Las tareas se guardan localmente en el mismo navegador y no se sincronizan entre dispositivos o usuarios.

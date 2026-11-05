@@ -53,6 +53,15 @@ const translations = {
     progress: 'Progreso',
     markAllRead: 'Marcar todas como leídas',
     noNotifications: 'No tienes notificaciones.',
+    toggleMenu: 'Mostrar u ocultar menú',
+    pendingDescription: 'Tareas por completar',
+    urgentPending: 'Pendientes urgentes',
+    taskStatusOverview: 'Estado general de tus tareas',
+    latestCreatedTasks: 'Últimas tareas creadas',
+    viewAll: 'Ver todas',
+    high: 'Alta',
+    medium: 'Media',
+    low: 'Baja',
   },
 
   en: {
@@ -104,6 +113,15 @@ const translations = {
     progress: 'Progress',
     markAllRead: 'Mark all as read',
     noNotifications: 'You have no notifications.',
+    toggleMenu: 'Show or hide menu',
+    pendingDescription: 'Tasks to complete',
+    urgentPending: 'Urgent pending tasks',
+    taskStatusOverview: 'Overall status of you tasks',
+    latestCreatedTasks: 'Latest created tasks',
+    viewAll: 'View all',
+    high: 'High',
+    medium: 'Medium',
+    low: 'Low',
   },
 };
 

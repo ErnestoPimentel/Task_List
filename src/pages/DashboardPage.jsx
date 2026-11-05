@@ -1,8 +1,10 @@
 import {Link} from 'react-router-dom';
 import {useTasks} from '../contexts/TaskContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 function DashboardPage(){
     const {tasks, loading} = useTasks();
+    const { t } = useLanguage();
 
     const totalTasks = tasks.length;
     const completedTasks = tasks.filter((task) => task.completed).length;
@@ -22,71 +24,80 @@ function DashboardPage(){
             (a,b) => 
                 new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         )
-        .splice(0, 5);
+        .slice(0, 5);
+
+    const getPriorityLabel = (priority) => {
+        const priorities = {
+            high: 'high',
+            medium: 'medium',
+            low: 'low'
+        };
+        return t(priorities[priority] || 'low');
+    };
 
     return(
         <section>
             <div className='page-header'>
                 <div>
                     <h1>
-                        Dashboard
+                        {t('dashboard')}
                     </h1>
                     <p>
-                        Resumen general de tus tareas.
+                        {t('overview')}
                     </p>
                 </div>
                 <Link to="/tareas" className='btn btn-primary'>
-                    Nueva tarea
+                    {t('createTask')}
                 </Link>
             </div>
             {
                 loading ? (
                     <div className='dashboard-loading'>
-                        Cargando información...
+                        {t('loading')}
                     </div>
                 ) : (
                     <>
                         <div className=' dashboard-grid'>
                             <article className='dashboard-card'>
                                 <span className='dashboard-card-label'>
-                                    Total tareas
+                                    {t('totalTasks')}
                                 </span>
                                 <strong>
                                     {totalTasks}
                                 </strong>
                                 <span className='dashboard-card-detail'>
-                                    Todas tus tareas
+                                    {t('allTasks')}
                                 </span>
                             </article>
                             <article className='dashboard-card'>
                                 <span className='dashboard-card-label'>
-                                    Completadas
+                                    {t('completedTasks')}
                                 </span>
                                 <strong>{completedTasks}</strong>
                                 <span className='dashboard-card-detail'>
-                                    {completionPercentage}% completado
+                                    {completionPercentage}% {t('completed').toLowerCase()}
                                 </span>
                             </article>
                             <article className='dashboard-card'>
                                 <span className='dashboard-card-label'>
-                                    Pendientes
+                                    {t('pendingTasks')}
                                 </span>
                                 <strong>
                                     {pendingTasks}
                                 </strong>
                                 <span className='dashboard-card-detail'>
-                                    Tareas por completar
+                                    {t('pendingDescription')}
                                 </span>
                             </article>
                             <article className='dashboard-card'>
                                 <span className='dashboard-card-label'>
-                                    Alta prioridad
+                                    {t('highPriority')}
                                 </span>
                                 <strong>
                                     {highPriorityTasks}
                                 </strong>
                                 <span className='dashboard-card-detail'>
-                                    Pendientes urgentes
+                                    {t('urgentPending')}
                                 </span>
                             </article>
                         </div>
@@ -95,17 +106,17 @@ function DashboardPage(){
                                 <div className='dashboard-panel-header'>
                                     <div>
                                         <h2>
-                                            Progreso
+                                            {t('progress')}
                                         </h2>
                                         <p>
-                                            Estado general de tus tareas.
+                                            {t('taskStatusOverview')}
                                         </p>
                                     </div>
                                 </div>
                                 <div className='dashboard-progress'>
                                     <div className='dashboard-progress-header'>
                                         <span>
-                                            Completado
+                                            {t('completed')}
                                         </span>
                                         <strong>
                                             {completionPercentage}
@@ -120,20 +131,20 @@ function DashboardPage(){
                                 <div className='dashboard-panel-header'>
                                     <div>
                                         <h2>
-                                            Tareas recientes
+                                            {t('recentTasks')}
                                         </h2>
                                         <p>
-                                            Últimas tareas creadas.
+                                            {t('latestCreatedTasks')}
                                         </p>
                                     </div>
                                     <Link to="/tareas">
-                                        Ver todas
+                                        {t('viewAll')}
                                     </Link>
                                 </div>
                                 {
                                     recentTasks.length === 0 ? (
                                         <div className='dashboard-empty'>
-                                            No hay tareas registradas
+                                            {t('noTasks')}
                                         </div>
                                     ) : (
                                         <div className='dashboard-recent-list'>
@@ -145,11 +156,11 @@ function DashboardPage(){
                                                                 {task.title}
                                                             </strong>
                                                             <span>
-                                                                {task.completed ? 'Completada' : 'Pendiente'}
+                                                                {task.completed ? t('completed') : t('pending')}
                                                             </span>
                                                         </div>
                                                         <span className={`task-priority priority-${task.priority}`}>
-                                                            {task.priority === 'high' ? 'Alta' : task.priority === 'medium' ? 'Media' : 'Baja'}
+                                                            {getPriorityLabel(task.priority)}
                                                         </span>
                                                     </Link>
                                                 )

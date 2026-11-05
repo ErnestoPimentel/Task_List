@@ -1,12 +1,14 @@
 import { useAuth } from '../../contexts/AuthContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 import NotificationBell from '../notifications/NotificationBell';
 
 function Header({onToggleSidebar}){
     const { user, logout } = useAuth();
+    const { t } = useLanguage();
 
     return(
         <header className="app-header">
-            <button type="button" className="menu-toggle" onClick={onToggleSidebar} aria-label="Mostrar u ocultar menú">
+            <button type="button" className="menu-toggle" onClick={onToggleSidebar} aria-label={t('toggleMenu')}>
                 ☰
             </button>
 
@@ -24,7 +26,7 @@ function Header({onToggleSidebar}){
                     </span>
                 </div>
                 <button type='button' className='btn btn-sm btn-outline-secondary ms-3' onClick={logout}>
-                    Salir
+                    {t('logout')}
                 </button>
             </div>
 
