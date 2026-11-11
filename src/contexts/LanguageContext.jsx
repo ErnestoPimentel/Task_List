@@ -62,6 +62,12 @@ const translations = {
     high: 'Alta',
     medium: 'Media',
     low: 'Baja',
+    planning: 'Planificación',
+    scheduledDescription: 'Organiza tus pendientes por fecha y hora.',
+    manageTasks: 'Administrar tareas',
+    scheduledPendingTasks: 'Tareas pendientes programadas.',
+    loadingScheduledTasks: 'Cargando tareas programadas...',
+    markAsRead: 'Marcar como leída'
   },
 
   en: {
@@ -122,6 +128,12 @@ const translations = {
     high: 'High',
     medium: 'Medium',
     low: 'Low',
+    planning: 'Planning',
+    scheduledDescription: 'Organize your pending tasks by date and time.',
+    manageTasks: 'Manage tasks',
+    scheduledPendingTasks: 'Scheduled pending tasks.',
+    loadingScheduledTasks: 'Loading scheduled tasks...',
+    markAsRead: 'Mark as read'
   },
 };
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNotifications } from '../../contexts/NotificationContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 function NotificationBell() {
     const [open, setOpen] = useState(false);
@@ -12,12 +13,16 @@ function NotificationBell() {
         markAllAsRead
     } = useNotifications();
 
+    const { t, language } = useLanguage();
+
+    const dateLocale = language === 'es' ? 'es-MX' : 'en-US';
+
     return (
         <div className="notification-wrapper">
             <button
                 type="button"
                 className="notification-bell"
-                aria-label={`Notificaciones sin leer: ${unreadCount}`}
+                aria-label={`${t('notifications')}: ${unreadCount}`}
                 aria-expanded={open}
                 onClick={() => setOpen((value) => !value)}
             >
@@ -46,21 +51,23 @@ function NotificationBell() {
             {open && (
                 <div className="notification-dropdown">
                     <div className="notification-dropdown-header">
-                        <h2>Notificaciones</h2>
+                        <h2>
+                            {t('notifications')}
+                        </h2>
 
                         {unreadCount > 0 && (
                             <button
                                 type="button"
                                 onClick={markAllAsRead}
                             >
-                                Marcar leídas
+                                {t('markAllRead')}
                             </button>
                         )}
                     </div>
 
                     {notifications.length === 0 ? (
                         <div className="notification-empty">
-                            No tienes notificaciones pendientes.
+                            {t('noNotifications')}
                         </div>
                     ) : (
                         <div className="notification-list">
@@ -89,7 +96,7 @@ function NotificationBell() {
                                         <small>
                                             {new Date(
                                                 notification.dueDate
-                                            ).toLocaleString()}
+                                            ).toLocaleString(dateLocale)}
                                         </small>
                                     </Link>
 
@@ -97,14 +104,14 @@ function NotificationBell() {
                                         <button
                                             type="button"
                                             className="notification-mark-read"
-                                            aria-label="Marcar como leída"
+                                            aria-label={t('markAsRead')}
                                             onClick={() =>
                                                 markAsRead(
                                                     notification.id
                                                 )
                                             }
                                         >
-                                            Marcar leída
+                                            {t('markAsRead')}
                                         </button>
                                     )}
                                 </div>

@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import {useTasks} from '../contexts/TaskContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import ScheduledTaskList from '../components/tasks/ScheduledTaskList';
 
 function ScheduledTasksPage(){
@@ -7,23 +8,24 @@ function ScheduledTasksPage(){
     const scheduledCount = tasks.filter(
         (task) => task.dueDate && !task.completed
     ).length;
+    const { t } = useLanguage();
 
     return(
         <section>
             <div className="page-header">
                 <div>
                     <span className="page-eyebrow">
-                        Planificación
+                        {t('planning')}
                     </span>
                     <h1>
-                        Tareas programadas
+                        {t('scheduled')}
                     </h1>
                     <p>
-                        Organiza tus pendientes por fecha y hora.
+                        {t('scheduledDescription')}
                     </p>
                 </div>
                 <Link to="/tareas" className='btn btn-primary'>
-                    Administra tareas
+                    {t('manageTasks')}
                 </Link>
             </div>
             {
@@ -36,7 +38,7 @@ function ScheduledTasksPage(){
             <div className='scheduled-summary'>
                 <div>
                     <span>
-                        Tareas pendientes programadas.
+                        {t('scheduledPendingTasks')}
                     </span>
                     <strong>
                         {scheduledCount}
@@ -46,7 +48,7 @@ function ScheduledTasksPage(){
             {
                 loading ? (
                     <div className='dashboard-loading'>
-                        Cargando tareas programadas...
+                        {t('loadingScheduledTasks')}
                     </div>
                 ) : (
                     <ScheduledTaskList tasks={tasks} />
